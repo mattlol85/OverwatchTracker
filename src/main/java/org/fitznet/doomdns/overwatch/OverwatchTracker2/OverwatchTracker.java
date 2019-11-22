@@ -9,11 +9,9 @@ import java.io.PrintWriter;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
-
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
-
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonParser;
@@ -25,23 +23,36 @@ public class OverwatchTracker {
 		String username = "Mattlol85-1435";
 		String platform = "pc";
 		String region = "us";
-		JSONObject playerData = getJsonFromString(requestData(username, platform, region));
-		prettyPrintJson(playerData);
+		JSONObject playerJson = getJsonFromString(requestData(username, platform, region));
+		//prettyPrintJson(playerJson);
 		//writeJSONdata(getPrettyJson(playerData));
-		System.out.println(playerData.get("quickPlayStats"));
-
+		//PlayerData testPlayerdata = new PlayerData(playerJson);
+		//System.out.println(testPlayerdata.getEndorsmentLevel());
+		//DO PLAYERDATA TESTING!!!!!!!!!!!!!!!
+		//System.out.println(PlayerData.getEndorsmentLevel());
 		/**
-		 * -------GAME PLAN-------
+		 * -------GAME PLAN------
 		 * 1) Get JSON files working right
 		 * -Get JSON to print pretty
 		 * -Find a storage method for JSON
+		 * 
+		 * 
+		 * 2) Get a GUI up and running
+		 * -GUI must ask for user Information (Region, platform and Username)
+		 * -Display ranking information with Images
+		 * -Show stats before and After a game showing differences
+		 * 
+		 * 3) Work out Comparison Logic
+		 * -Graphically show preformance data
+		 * -Refresh every 5? mins for accurate data
+		 * 
 		 */
 	}
 	/**
 	 * Takes a string in JSON format, and provided that it is NOT empty, it returns a 
 	 * JSON object
 	 * 
-	 * @param jsonAsString
+	 * @param jsonAsString - String containing JSON formatted data
 	 * @return JSONObject contatining the string information
 	 */
 	private static JSONObject getJsonFromString(String jsonAsString) {
