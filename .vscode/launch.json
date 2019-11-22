@@ -1,0 +1,11 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - OverwatchTracker",
+            "request": "launch",
+            "mainClass": "org.fitznet.doomdns.overwatch.OverwatchTracker2.OverwatchTracker",
+            "projectName": "OverwatchTracker2"
+        }
+    ]
+}

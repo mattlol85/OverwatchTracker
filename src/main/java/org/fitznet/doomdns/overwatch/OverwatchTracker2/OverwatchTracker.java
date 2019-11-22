@@ -5,7 +5,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.Writer;
+//import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -27,8 +27,23 @@ public class OverwatchTracker {
 		String region = "us";
 		JSONObject playerData = getJsonFromString(requestData(username, platform, region));
 		prettyPrintJson(playerData);
-	}
+		//writeJSONdata(getPrettyJson(playerData));
+		System.out.println(playerData.get("quickPlayStats"));
 
+		/**
+		 * -------GAME PLAN-------
+		 * 1) Get JSON files working right
+		 * -Get JSON to print pretty
+		 * -Find a storage method for JSON
+		 */
+	}
+	/**
+	 * Takes a string in JSON format, and provided that it is NOT empty, it returns a 
+	 * JSON object
+	 * 
+	 * @param jsonAsString
+	 * @return JSONObject contatining the string information
+	 */
 	private static JSONObject getJsonFromString(String jsonAsString) {
 
 		JSONObject jsonObject = new JSONObject();
@@ -89,15 +104,6 @@ public class OverwatchTracker {
 		return null;
 	}
 
-	/**
-	 * This method writes JSON data to the console in a pretty format
-	 * 
-	 * @param jsonData
-	 */
-	private static void printJSONdata(JSONObject jsonData) {
-		System.out.println(jsonData.toString());
-	}
-
 	private static void writeJSONdata(JSONObject jsonData) {
 		String jsonString = jsonData.toString();
 		Gson gson = new GsonBuilder().setPrettyPrinting().create();
@@ -113,12 +119,22 @@ public class OverwatchTracker {
 			e.printStackTrace();
 		}
 	}
-
+	/**
+	 * This method writes JSON data to the console in a pretty format
+	 * 
+	 * @param jsonData
+	 */
 	private static void prettyPrintJson(JSONObject jsonData) {
-		String jsonString = jsonData.toString();
-		Gson gson = new GsonBuilder().setPrettyPrinting().create();
-		JsonParser jp = new JsonParser();
-		gson.toJson(jp.parse(jsonString));
-		System.out.println(gson.toJson(jp.parse(jsonString)));
+		Gson gson = new GsonBuilder().setPrettyPrinting().create(); 		//Set the printing to be pretty
+		JsonParser jp = new JsonParser();									//Create a JSON parser
+		System.out.println(gson.toJson(jp.parse(jsonData.toString())));		//Return a pretty JSON String
+	}
+
+	private static JSONObject getPrettyJson(JSONObject jsonData){
+	Gson gson = new GsonBuilder().setPrettyPrinting().create();				//Set the printing to be pretty
+	JsonParser jp = new JsonParser();
+	String prettyString = gson.toJson(jp.parse(jsonData.toJSONString()));										//Create a JSON parser
+	JSONObject prettyJsonObject = getJsonFromString(prettyString);			//Create new JSON object from pretty string
+	return prettyJsonObject;
 	}
 }
