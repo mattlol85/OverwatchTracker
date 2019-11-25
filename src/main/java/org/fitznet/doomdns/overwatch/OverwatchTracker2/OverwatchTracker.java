@@ -5,7 +5,6 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-//import java.io.Writer;
 import java.net.HttpURLConnection;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -28,9 +27,8 @@ public class OverwatchTracker {
 		prettyPrintJson(playerJson);
 		//writeJSONdata(getPrettyJson(playerData));
 		PlayerData testPlayerdata = new PlayerData(playerJson);
-		//System.out.println(testPlayerdata.getEndorsmentLevel());
-		//DO PLAYERDATA TESTING!!!!!!!!!!!!!!!
-		//System.out.println(PlayerData.getEndorsmentLevel());
+		System.out.println(testPlayerdata.isPrivate());
+
 		/**
 		 * -------GAME PLAN------
 		 * 1) Get JSON files working right
@@ -149,4 +147,6 @@ public class OverwatchTracker {
 	JSONObject prettyJsonObject = getJsonFromString(prettyString);			//Create new JSON object from pretty string
 	return prettyJsonObject;
 	}
+
+	public static void print (String str){System.out.println(str);}
 }
