@@ -1,6 +1,7 @@
 package org.fitznet.doomdns.overwatch.OverwatchTracker2;
 
 import org.json.simple.JSONObject;
+import org.json.simple.JSONValue;
 
 import java.net.URL;
 
@@ -10,6 +11,7 @@ import org.json.simple.parser.*;
 public class PlayerData{
 private boolean isProfilePrivate;
 private int endorsmentLevel;
+private int playerLevel;
 private URL profileIcon;
 private int rating;
 private int prestigeLevel;
@@ -27,7 +29,8 @@ private URL levelIcon;
     isProfilePrivate = false;
     else
     isProfilePrivate = true;
-    endorsmentLevel = (int) jsonData.get("endorsement");
+    
+    
     }
 
     //No Argument, Defaults to my Data

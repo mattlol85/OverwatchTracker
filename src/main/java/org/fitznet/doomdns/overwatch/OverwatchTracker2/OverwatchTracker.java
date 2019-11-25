@@ -23,10 +23,11 @@ public class OverwatchTracker {
 		String username = "Mattlol85-1435";
 		String platform = "pc";
 		String region = "us";
+
 		JSONObject playerJson = getJsonFromString(requestData(username, platform, region));
-		//prettyPrintJson(playerJson);
+		prettyPrintJson(playerJson);
 		//writeJSONdata(getPrettyJson(playerData));
-		//PlayerData testPlayerdata = new PlayerData(playerJson);
+		PlayerData testPlayerdata = new PlayerData(playerJson);
 		//System.out.println(testPlayerdata.getEndorsmentLevel());
 		//DO PLAYERDATA TESTING!!!!!!!!!!!!!!!
 		//System.out.println(PlayerData.getEndorsmentLevel());
